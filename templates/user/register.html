@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}用户注册{% endblock %}
+{% block middle %}
+    <p>1111111111111111{{ msg }}</p>
+{#    # 路由推荐用url_for的方式写。#}
+    <form action={{ url_for('user.register') }}  method="post">
+        <P><input type="text" name="username" placeholder="输入用户名"></P>
+        <P><input type="password" name="password" placeholder="输入密码"></P>
+        <P><input type="password" name="repassword" placeholder="确认密码"></P>
+        <P><input type="text" name="phone" placeholder="输入手机号"></P>
+        <P><input type="submit" value="用户注册"></P></form>
+{% endblock %}

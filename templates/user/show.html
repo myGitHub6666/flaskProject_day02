@@ -1,0 +1,33 @@
+{% block title %}用户信息展示{% endblock %}
+{% block middle %}
+
+    <h1>用户信息</h1>
+<span>当前用户人数是：{{ users | length }}</span>
+    <table border="2" cellpadding="2" width="100%">
+        {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.phone }}</td>
+{#     href="javascript:;" 超链接本身直接执行href。这样可以把href功能注销，让执行onclick功能           #}
+                <td><a href="javascript:;" onclick="del('{{ user.username}}')">删除</a></td>
+                <td><a href="javascript:;" onclick="update('{{ user.username}}')">修改</a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+{% block myjs %}
+    <script>
+        // 删除的函数
+        function del(username){
+            {#console.log(username)#}
+{#     location地址栏对象，127.0.0.1:5000,设置这个就相当于点击回车，访问此连接，然后后端根据此连接获取携带的参数      #}
+            location.href='/del?username='+username
+        }
+        // 修改的函数
+        function update(username){
+            location.href='/update?username='+username
+        }
+    </script>
+{% endblock %}
